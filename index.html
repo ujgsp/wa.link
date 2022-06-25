@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>WA Link</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+  <script src="jquery-3.6.0.min.js"></script>
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h2>WA Link </h2>
+        <p class="lead">
+          Website ini dimaksudkan sebagai cara lain untuk mengakses tautan WhatsApp <i><u>Click to Chat</u></i> <code>https://wa.me/1XXXXXXXXXX</code> untuk mempermudah akses URL.
+        </p>
+      </div>
+
+      <div class="row g-5">
+        <!-- <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill">3</span>
+          </h4>
+          <img src="https://www.vecteezy.com/free-vector/2022" class="img-fluid" alt="...">
+
+
+        </div> -->
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Form Akses</h4>
+          <form class="needs-validation" id="myForm" novalidate>
+            <div class="row g-3">
+
+              <div class="col-12">
+                <label for="no_hp" class="form-label">No HP <span class="text-muted">(Kode Telepon Indonesia)</span></label>
+                <input type="text" class="form-control" id="no_hp" name="txtnohp" placeholder="Nomor awal 0 atau 62" required>
+                <div class="invalid-feedback">
+                  Silahkan masukan nomor telepon
+                </div>
+              </div>
+
+              <div class="col-12">
+                <!-- <label class="form-label">Pesan <span class="text-muted">(Optional)</span></label> -->
+                <!-- <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"> -->
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea name="" id="pesan" cols="30" rows="3" class="form-control" required placeholder="Pesan disini.."></textarea>
+                <div class="invalid-feedback">
+                  Silahkan masukan pesan
+                </div>
+              </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" id="kirim" >Kirim</button>
+          </form>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2022</p>
+      <ul class="list-inline">
+        <!-- <li class="list-inline-item"><a href="#">Privacy</a></li> -->
+        <!-- <li class="list-inline-item"><a href="#">Terms</a></li> -->
+        <li class="list-inline-item"><a href="#">Disclaimer</a></li>
+      </ul>
+    </footer>
+  </div>
+
+
+  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="form-validation.js"></script>
+  <script src="custom.js"></script>
+</body>
+
+</html>
+
+<script>
+  $(document).ready(function () {
+    // Send a request when the button is clicked
+    $(document).on("submit", "#myForm",function (e) {
+      e.preventDefault();
+      let nohp = $('#no_hp').val();
+      let pesan = $('#pesan').val();
+
+      // parse no hp ke kode international indonesia
+      let search_no_hp = nohp.indexOf("0");
+      let replace_no_hp = nohp.replace(search_no_hp, "62");
+
+      let whatsapp_url = "https://wa.me/" + replace_no_hp + "?text=" + pesan;
+      window.open(
+        whatsapp_url,
+        '_blank' // <- This is what makes it open in a new window.
+      );
+
+    });
+
+  });
+</script>
